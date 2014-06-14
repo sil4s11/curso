@@ -77,6 +77,7 @@
             </span>
         </h3>
     </footer>
+    {% raw %}
     <script type="text/template" id='article-template'>
         
             <div class="descripcion">
@@ -84,7 +85,7 @@
                     <img src="/imagenes/foto.jpg" />
                 </figure>
                 <div class="detalles">
-                    <h2 class="titulo"><%= title %></h2>
+                    <h2 class="titulo">{{ title }} </h2>
                     <p class="autor">
                         por <a href="#">Diana Reyes</a>
                     </p>
@@ -107,6 +108,8 @@
             </div>
         
     </script>
+    {% endraw %}
+
 </body>
 </html>
 
