@@ -1,7 +1,8 @@
 Puls3.Views.Article = Backbone.View.extend({
 	events:{
 		"click .votos .up":"upvote",
-		"click .votos .down":"downvote"
+		"click .votos .down":"downvote",
+		"click" : "navigate"
 	},
 	 tagName:'article',
 	 className:'post',
@@ -11,6 +12,19 @@ Puls3.Views.Article = Backbone.View.extend({
 	 	//this.template = swig.compile( $("#article-template").html() );
 	 	this.model.on("change",function(){
 	 		self.render();
+	 	});
+
+	 	window.routers.base.on('route:root',function(){
+	 		self.$el.css('display','');
+	 	});
+
+	 	window.routers.base.on('route:articleSingle',function(){
+	 		if(window.app.article === self.model.get('id')){
+	 			console.log('render as extended')
+	 		}else{
+	 			self.$el.hide();
+	 		}
+
 	 	});
 
 	 },
@@ -29,10 +43,23 @@ Puls3.Views.Article = Backbone.View.extend({
 
 	 },
 	 downvote:function(){
+	 	e.preventDefault();
+
 	 	var votes = parseInt( this.model.get('votes') , 10 );
 	 	this.model.set('votes', --votes);
 	 	this.model.save();
 
 
+	 },
+	 navigate:function(){
+	 	Backbone.history.navigate('article/'+this.model.get('id'),{trigger:true})
 	 }
+
+
 });
+
+
+
+
+
+

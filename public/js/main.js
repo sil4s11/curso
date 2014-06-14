@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	console.log('main.js loaded');
 
+
+
 	window.ponyExpress = new PonyExpress({
 		io: window.location.origin
 	});
@@ -19,7 +21,7 @@ $(document).ready(function(){
 
 	// hace un ajax a /articles con get
 	// todo lo obtenido lo pasa a json y a modelos dentro de la collecion
-	window.collections.articles.fetch(); 
+	var xhr = window.collections.articles.fetch(); 
 
 	//EVENTOS EN LA COLECCION
 	window.collections.articles.on('add', function (model){
@@ -32,4 +34,23 @@ $(document).ready(function(){
 
 	});
 
+	//instancia para empezar a navegar por el app
+	window.routers.base = new Puls3.Routers.Base();
+
+	//iniciamos 
+	xhr.done(function (){
+		console.log("start app");
+		//CUANDO TERMINA DE CARGAR TODOS LOS ARTICULOS ARRANCA LA APLICACION
+		Backbone.history.start({
+			root:'/',
+			pushState:true , // parar que no use # en la url
+			silent : false  // para que siempre se dispare 
+		});
+
+	});
+
 });
+
+
+
+

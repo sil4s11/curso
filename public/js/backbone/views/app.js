@@ -1,7 +1,8 @@
 Puls3.Views.App = Backbone.View.extend({
 	events:{
 		"click .publicar":"showForm",
-		"submit form": "createArticle"
+		"submit form": "createArticle",
+		'click .logo': "navigateHome"
 	},
 	initialize : function($el){
 		this.$el = $el;
@@ -26,5 +27,8 @@ Puls3.Views.App = Backbone.View.extend({
 		model.save(); // envia al server para que guarde la data 
 
 
+	},
+	navigateHome:function(){
+		Backbone.history.navigate('',{trigger:true})
 	}
 });
