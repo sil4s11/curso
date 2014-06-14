@@ -17,6 +17,10 @@ $(document).ready(function(){
 
 	window.collections.articles = new Puls3.Collections.Articles();
 
+	// hace un ajax a /articles con get
+	// todo lo obtenido lo pasa a json y a modelos dentro de la collecion
+	window.collections.articles.fetch(); 
+
 	//EVENTOS EN LA COLECCION
 	window.collections.articles.on('add', function (model){
 		// console.log('se ha agregado ', model.toJSON());
@@ -27,9 +31,5 @@ $(document).ready(function(){
 		view.$el.prependTo(".posts");
 
 	});
-
-	// hace un ajax a /articles con get
-	// todo lo obtenido lo pasa a json y a modelos dentro de la collecion
-	window.collections.articles.fetch(); 
 
 });
