@@ -1,6 +1,11 @@
 $(document).ready(function(){
 	console.log('main.js loaded');
 
+	//creamos un manejador de todo la aplicacion
+	window.views.app = new Puls3.Views.App( $("body") );
+
+
+
 	window.collections.articles = new Puls3.Collections.Articles();
 
 	//EVENTOS EN LA COLECCION
@@ -10,7 +15,7 @@ $(document).ready(function(){
 		// crea su vercion en html relacionada al modelo
 		//cuando se agrega la variable model , ya se agrega directamente en el view 
 		view.render();
-		view.$el.appendTo(".posts");
+		view.$el.prependTo(".posts");
 
 	});
 
