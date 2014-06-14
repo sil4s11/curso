@@ -3,8 +3,14 @@ Puls3.Views.Article = Backbone.View.extend({
 	 className:'post',
 	 initialize: function (){
 
+	 	this.template = _.template( $("#article-template").html());
+
 	 },
 	 render : function (){
-	 	this.$el.html( this.model.get("title"));
+
+	 	var data = this.model.toJSON();
+	 	var html = this.template(data); 
+	 	//ACTUALIZA EL HTML DEL VIEW
+	 	this.$el.html( html );
 	 }
 });

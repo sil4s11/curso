@@ -10,7 +10,7 @@ $(document).ready(function(){
 		// crea su vercion en html relacionada al modelo
 		//cuando se agrega la variable model , ya se agrega directamente en el view 
 		view.render();
-		view.$el.appendTo("body");
+		view.$el.appendTo(".posts");
 
 	});
 
