@@ -50,13 +50,13 @@ app.post('/articles', function (req, res){
 	res.send(200, {status:"Ok", id: req.body.id});
 });
 
-app.put('/articles/:id', function (req, res){
+app.put('/articles', function (req, res){
 	var article;
 
 	for (var i = data.length - 1; i >= 0; i--) {
 		article = data[i];
 
-		if(article.id === req.params.id){
+		if(article.id === req.body.id){
 			data[i] = req.body;
 		}
 	}
@@ -79,4 +79,4 @@ app.get('/', home);
 app.get('/article/:id', home);
 
 
-server.listen(3001);
+server.listen(3002);
