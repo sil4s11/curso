@@ -1,3 +1,13 @@
 body {
   background: #44d;
 }
+.btn {
+  background: #f00;
+  -o-transition: 1s;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+}
+.btn:hover {
+  background: #ffa500;
+}
