@@ -31,15 +31,15 @@ app.use(express.methodOverride());
 app.use( express.static('./public') );
 
 // Routes
-app.get('/articles/all', function(req, res){
+app.get('/articles/', function(req, res){
 	res.send(data);
 });
 
 app.post('/articles', function (req, res){
 	req.body.id = uuid.v1();
 	req.body.votes = 0;
-	req.body.image = "/img/img3.jpg";
-	req.body.user  = "Siedrix";
+	req.body.image = "/imagenes/img3.jpg";
+	req.body.user  = "Fran";
 
 	data.push(req.body);
 
@@ -79,4 +79,4 @@ app.get('/', home);
 app.get('/article/:id', home);
 
 
-server.listen(3002);
+server.listen(3000);
